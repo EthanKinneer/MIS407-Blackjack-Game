@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BlackJack</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style>
+		body {
+        background-image: url('https://wallpapers.com/images/hd/poker-table-green-fabric-ehvbvg2v8010o3sx.jpg');
+        background-repeat: stretch;
+		}
+		.fading {
+		animation-name: fading;
+		animation-duration: 1s;
+		}
+        @keyframes fading {
+  			from {opacity: 0;}
+  			to {opacity: 1;}
+		}
+
+	</style>
+</head>
+<body>
+<header class="text-center">
+	<h1 style="color:white;font-size:40px;background-color: rgba(0, 0, 0, 0.65);">BlackJack</h1>
+</header>
+<main class="container">
+  <form method="POST">
+		<div class="row">
+			<div class="col-2">
+				<p style="color:white;font-size:24px;background-color: rgba(0, 0, 0, 0.65);">Dealer Hand:</p>
+			</div>
+		</div>
+		<div class="row">
+			{% for card in dealer_cards %}
+			<div class="col-1">
+				{% if card == "??" %}
+				<img src="/images/playingCardBack.jpg" alt="{{card}}">
+				{% else %}
+				<img src="https://deckofcardsapi.com/static/img/{{card}}.png" alt="{{card}}" class="fading">
+
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+		<div class="row">
+			<div class="col-2">
+				<p style="color:white;font-size:24px;background-color: rgba(0, 0, 0, 0.65);">Player Hand: </p>
+			</div>
+		</div>
+		<div class="row">
+			{% for card in player_cards %}
+			<div class="col-1">
+				<img src="https://deckofcardsapi.com/static/img/{{card}}.png" alt="{{card}}" class="fading">
+			</div>
+			{% endfor %}
+		</div>
+		<div class="row form-group">
+			<div class="col-12 text-right">
+				<p style="color:white;font-size:24px;">{{hand_results}} </p>
+				{% if not is_winner%}
+				<button type="submit" name="submitButton" value="H" class="btn btn-success btn-lg">Hit</button>
+				<button type="submit" name="submitButton" value="S" class="btn btn-primary btn-lg">Stand</button>
+				{% endif %}
+				{% if is_winner%}
+				<a href="/blackjack/bet" class="btn btn-warning btn-lg">Restart</a>
+				{% endif %}
+			</div>
+			<div class="col-4">
+             <h2 style="color: white; background-color: rgba(0, 0, 0, 0.65);">Current Balance: {{player_balance}}</h2>
+          </div>
+		</div>
+  </form>
+</main>
+</body>
+</html>

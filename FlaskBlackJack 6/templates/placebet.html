@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BlackJack</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style>
+		body {
+        background-image: url('https://wallpapers.com/images/hd/poker-table-green-fabric-ehvbvg2v8010o3sx.jpg');
+        background-repeat: stretch;
+      }
+	</style>
+</head>
+<body>
+<header class="text-center">
+	<h1 style="color:white;font-size:40px;background-color: rgba(0, 0, 0, 0.65);">BlackJack</h1>
+</header>
+<main class="container">
+  <form method="post" action="{{ url_for('post_bet_page') }}">
+		<div class="row">
+			<div class="col-2">
+				<p style="color:white;font-size:24px;background-color: rgba(0, 0, 0, 0.65);">Dealer Hand:</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-1">
+              <img src="/images/playingCardBack.jpg">
+			</div>
+          <div class="col-1">
+              <img src="/images/playingCardBack.jpg">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				<p style="color:white;font-size:24px;background-color: rgba(0, 0, 0, 0.65);">Player Hand: </p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-1">
+              <img src="/images/playingCardBack.jpg">
+			</div>
+          <div class="col-1">
+              <img src="/images/playingCardBack.jpg">
+			</div>
+
+
+
+		</div>
+		<div class="row form-group">
+
+			<div class="col-12 text-right">
+				{% if badbet == True %}
+				<h2 style="color: red;">Invalid Bet!</h2>
+				{% endif %}
+              <h2 style="color: white;">Place your bet below!</h2>
+              <input type="text" name="placebet" placeholder="Enter Bet" required="required">
+				<button type="submit" class="btn btn-warning btn-lg">Submit Bet</button>
+			</div>
+			<div class="col-4">
+             <h2 style="color: white; background-color: rgba(0, 0, 0, 0.65);">Current Balance: {{player_balance}}</h2>
+          </div>
+		</div>
+  </form>
+</main>
+</body>
+</html>

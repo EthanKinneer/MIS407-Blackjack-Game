@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BlackJack</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style>
+		body {
+        background-image: url('https://miro.medium.com/max/10944/1*e6XOY9PuErUseExEz58BJQ.jpeg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+ 		background-size: 100% 100%;
+      }
+      h1 {text-align: center;}
+	</style>
+</head>
+<body>
+<header class="text-center">
+	<h1 style="color:white;font-size:40px">Welcome to our online BlackJack Game.</h1>
+	<h1 style="color:white;font-size:25px">Click the button below to start playing.</h1>
+</header>
+<main class="text-center">
+	<h1><a id="blackjackLink" href="/blackjack/bet" class="btn btn-primary btn-lg">Online BlackJack</a></h1>
+</main>
+<script>
+	if (window.location !== window.parent.location) {
+		document.getElementById("blackjackLink").target = "_blank";
+	}
+</script>
+</body>
+</html>
